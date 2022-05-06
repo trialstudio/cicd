@@ -3,8 +3,14 @@
     {
       "name": "one",
       "apps": [
-        "this",
-        "that"
+        {
+          "name": "this",
+          "framework": "spring"
+        },
+        {
+          "name": "that",
+          "framework": "quarkus"
+        }
       ]
     }
   ]
