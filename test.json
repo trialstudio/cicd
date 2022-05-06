@@ -1,0 +1,11 @@
+{
+  "teams": [
+    {
+      "name": "one",
+      "apps": [
+        "this",
+        "that"
+      ]
+    }
+  ]
+}
