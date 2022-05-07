@@ -1,6 +1,6 @@
 node {
   
-  jobDsl targets: 'seedJob.groovy',
+  jobDsl targets: 'seedJob.groovys',
     failOnSeedCollision: true,
     removedConfigFilesAction: 'DELETE',
     removedJobAction: 'DELETE',
