@@ -1,12 +1,13 @@
 pipeline {
-  agent any
+  agent { label 'built-in' }
+
   stages {
-    stage('one') {
+    stage('create seed job') {
       steps {
-        sh 'ls -lahR'
-        sh 'pwd'
         jobDsl targets: 'seedJob.groovy',
           failOnSeedCollision: true,
+          ignoreMissingFiles: false,
+          ignoreExisting: false,
           removedConfigFilesAction: 'DELETE',
           removedJobAction: 'DELETE',
           removedViewAction: 'DELETE',
@@ -16,4 +17,3 @@ pipeline {
     }
   }
 }
-    
