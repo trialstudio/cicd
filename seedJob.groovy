@@ -1,8 +1,9 @@
-def repos = new groovy.json.JsonSlurper().parse(streamFileFromWorkspace('test.json'))
+def repos = new groovy.json.JsonSlurper().parse(streamFileFromWorkspace('team-apps.json'))
 def teamPermissions = [
     "hudson.model.Item.Build",
     "hudson.model.Item.Cancel",
     "hudson.model.Item.Read",
+    "hudson.model.Item.ExtendedRead",
     "hudson.model.Item.Workspace",
     "com.cloudbees.plugins.credentials.CredentialsProvider.View"
 ]
@@ -18,11 +19,6 @@ for (team in repos.teams) {
             properties {
                 authorizationMatrix {
                     permissions(teamPermissions.collect { "GROUP:" + it + ":trialstudio*${team.name}" })
-                }
-                authorizeProjectProperty {
-                    strategy {
-                        triggeringUsersAuthorizationStrategy()
-                    }
                 }
             }
         }

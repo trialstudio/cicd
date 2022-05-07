@@ -1,0 +1,52 @@
+---
+plugins:
+  - artifactId: git
+    source:
+      version: 4.11.1
+  - artifactId: configuration-as-code
+    source:
+      version: 1429.v09b_044a_c93de
+  - artifactId: blueocean
+    source:
+      version: 1.25.3
+  - artifactId: kubernetes
+    source:
+      version: 3580.v78271e5631dc
+  - artifactId: timestamper
+    source:
+      version: 1.17
+  - artifactId: credentials-binding
+    source:
+      version: 523.vd859a_4b_122e6
+  - artifactId: pipeline-stage-view
+    source:
+      version: 2.24
+  - artifactId: matrix-auth
+    source:
+      version: 3.1.2
+  - artifactId: ws-cleanup
+    source:
+      version: 0.42
+  - artifactId: prometheus
+    source:
+      version: 2.0.11
+  - artifactId: metrics
+    source:
+      version: 4.1.6.2
+  - artifactId: github-scm-trait-notification-context
+    source:
+      version: 1.1
+  - artifactId: job-dsl
+    source:
+      version: 1.79
+# removing this because this is not fully compatible with jcasc as of 5/7/2022
+# also not necessary since devs are not meant to configure/create jobs, but able to read them
+#  - artifactId: authorize-project
+#    source:
+#      version: 1.4.0
+  - artifactId: github-oauth
+    source:
+      version: 0.38
+  - artifactId: extended-read-permission
+    source:
+      version: 3.2

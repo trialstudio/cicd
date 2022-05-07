@@ -1,4 +1,4 @@
-job ('seed-job') {
+job ('seedJob') {
     description('Seed job that is to be referenced in Configuration as Code plugin')
 
     triggers {
@@ -7,33 +7,26 @@ job ('seed-job') {
         }
     }
 
-    properties {
-        authorizeProjectProperty {
-            githubProjectUrl('https://github.com/trialstudio/cicd.git')
-            strategy {
-                triggeringUsersAuthorizationStrategy()
-            }
-        }
-    }
-
     scm {
         git {
             remote {
                 credentials('github')
-                url('git@github.com:trialstudio/cicd.git')
+                url('https://github.com/trialstudio/cicd.git')
             }
             branch('main')
             extensions {
                 cleanBeforeCheckout()
                 cloneOption {
-                    shalllow(true)
+                    shallow(true)
                     depth(1)
                     noTags(true)
+                    timeout(3)
+                    reference('')
                 }
                 sparseCheckoutPaths {
                     sparseCheckoutPaths {
                         sparseCheckoutPath {
-                            path('seed-job.groovy')
+                            path('seedJob.groovy')
                         }
                     }
                 }
@@ -41,15 +34,12 @@ job ('seed-job') {
         }
     }
 
-    job {
-        steps {
-            dsl {
-                external('seed-job.groovy')
-                removeAction('DELETE')
-                removeViewAction('DELETE')
-                ignoreExisting()
-                additionalClasspath('lib')
-            }
+    steps {
+        dsl {
+            external('seedJob.groovy')
+            removeAction('DELETE')
+            removeViewAction('DELETE')
+            additionalClasspath('lib')
         }
     }
 }
