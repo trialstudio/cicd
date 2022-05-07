@@ -1,0 +1,18 @@
+{
+  "teams": [
+    {
+      "name": "team-a",
+      "apps": [
+        {"name": "this", "type": "spring"},
+        {"name": "that", "type": "quarkus"}
+      ]
+    },
+    {
+      "name": "team-b",
+      "apps": [
+        {"name": "one", "type": "type1"},
+        {"name": "two", "type": "type2"}
+      ]
+    }
+  ]
+}
