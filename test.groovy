@@ -1,12 +1,12 @@
-node {
-  sh '''ls -lahR
-  pwd'''
-  jobDsl targets: 'seedJob.groovys',
-    failOnSeedCollision: true,
-    removedConfigFilesAction: 'DELETE',
-    removedJobAction: 'DELETE',
-    removedViewAction: 'DELETE',
-    sandbox: false,
-    unstableOnDeprecation: true
-  
+pipeline {
+  agent any
+  stages {
+    stage('one') {
+      steps {
+        sh 'ls -lahR'
+        sh 'pwd'
+      }
+    }
+  }
 }
+    
