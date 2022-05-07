@@ -23,13 +23,6 @@ job ('seedJob') {
                     timeout(3)
                     reference('')
                 }
-                sparseCheckoutPaths {
-                    sparseCheckoutPaths {
-                        sparseCheckoutPath {
-                            path('seedJob.groovy')
-                        }
-                    }
-                }
             }
         }
     }
