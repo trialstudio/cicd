@@ -1,5 +1,6 @@
 node {
-  
+  sh '''ls -lahR
+  pwd'''
   jobDsl targets: 'seedJob.groovys',
     failOnSeedCollision: true,
     removedConfigFilesAction: 'DELETE',
