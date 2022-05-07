@@ -5,7 +5,7 @@ node {
     removedConfigFilesAction: 'DELETE',
     removedJobAction: 'DELETE',
     removedViewAction: 'DELETE',
-    sandbox: true,
+    sandbox: false,
     unstableOnDeprecation: true
   
 }
