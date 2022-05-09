@@ -1,0 +1,13 @@
+- name: "team-a"
+  apps:
+    - name: "one"
+      type: "springboot"
+    - name: "two"
+      type: "springboot"
+
+- name: "team-c"
+  apps:
+    - name: "this"
+      type: "springboot"
+    - name: "that"
+      type: "springboot"

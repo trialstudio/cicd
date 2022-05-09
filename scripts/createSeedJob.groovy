@@ -28,13 +28,13 @@ pipelineJob('seedJob') {
                             reference('')
                         }
                         pathRestriction {
-                            includedRegions('seedJob.groovy\nteam-apps.json')
+                            includedRegions('scripts')
                             excludedRegions('')
                         }
                     }
                 }
             }
-            scriptPath('createSeedJob-pipeline.groovy')
+            scriptPath('scripts/createSeedJobPipeline.groovy')
         }
     }
 }

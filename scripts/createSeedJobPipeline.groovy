@@ -4,15 +4,18 @@ pipeline {
   stages {
     stage('create seed job') {
       steps {
-        jobDsl targets: 'seedJob.groovy',
-          failOnSeedCollision: true,
+        jobDsl failOnSeedCollision: true,
           ignoreMissingFiles: false,
           ignoreExisting: false,
           removedConfigFilesAction: 'DELETE',
           removedJobAction: 'DELETE',
           removedViewAction: 'DELETE',
           sandbox: false,
-          unstableOnDeprecation: true
+          unstableOnDeprecation: true,
+          scriptText: '''
+            @Library('job-dsl') _
+            main.initialize()
+            '''.stripIndent()
       }
     }
   }
