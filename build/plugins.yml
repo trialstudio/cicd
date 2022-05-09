@@ -50,3 +50,12 @@ plugins:
   - artifactId: extended-read-permission
     source:
       version: 3.2
+  - artifactId: next-build-number
+    source:
+      version: 1.8
+  - artifactId: categorized-view
+    source:
+      version: 1.12
+  - artifactId: pipeline-utility-steps
+    source:
+      version: 2.12.1

@@ -15,7 +15,7 @@ jenkins:
     projectMatrix:
       permissions:
         - "GROUP:Overall/Administer:trialstudio*site-reliability-engineers"
-        - "GROUP:Overall/Read:authenticated"
+        - "GROUP:Overall/Read:trialstudio"
   markupFormatter:
     rawHtml:
       disableSyntaxHighlighting: false
@@ -33,6 +33,8 @@ jenkins:
 security:
   apiToken:
     usageStatisticsEnabled: false
+  globalJobDslSecurityConfiguration:
+    useScriptSecurity: false
 
 unclassified:
   buildDiscarders:
@@ -44,13 +46,25 @@ unclassified:
               numToKeepStr: "20"
   globalDefaultFlowDurabilityLevel:
     durabilityHint: PERFORMANCE_OPTIMIZED
+  globalLibraries:
+    libraries:
+      - defaultVersion: "main"
+        name: "job-dsl"
+        retriever:
+          modernSCM:
+            libraryPath: "scripts/"
+            scm:
+              git:
+                credentialsId: "github"
+                remote: "https://github.com/trialstudio/cicd.git"
   location:
     adminAddress: "address not configured yet <nobody@nowhere> ${TERM}"
     url: "http://jenkins.trial.studio/"
   prometheusConfiguration:
     collectDiskUsage: false
     collectingMetricsPeriodInSeconds: 15
+  timestamper:
+    allPipelines: true
 
 jobs:
-  - url: https://raw.githubusercontent.com/trialstudio/cicd/main/createSeedJob.groovy
-  - url: https://raw.githubusercontent.com/trialstudio/cicd/main/seedJob.groovy
+  - url: https://raw.githubusercontent.com/trialstudio/cicd/main/scripts/createSeedJob.groovy
