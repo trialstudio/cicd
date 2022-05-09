@@ -10,31 +10,11 @@ pipelineJob('seedJob') {
         }
     }
     definition {
-        cpsScm {
-            scm {
-                git {
-                    remote {
-                        credentials('github')
-                        url('https://github.com/trialstudio/cicd.git')
-                    }
-                    branch('main')
-                    extensions {
-                        cleanBeforeCheckout()
-                        cloneOption {
-                            shallow(true)
-                            depth(1)
-                            noTags(true)
-                            timeout(3)
-                            reference('')
-                        }
-                        pathRestriction {
-                            includedRegions('scripts')
-                            excludedRegions('')
-                        }
-                    }
-                }
-            }
-            scriptPath('scripts/createSeedJobPipeline.groovy')
+        cps {
+            script('''
+                @Library('job-dsl') _
+                main.initialize()
+                '''.stripIndent().trim())
         }
     }
 }
