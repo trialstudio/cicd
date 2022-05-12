@@ -2,8 +2,8 @@ pipelineJob('seedJob') {
     properties {
         pipelineTriggers {
             triggers {
-                cron {
-                    spec('H/10 * * * *')
+                pollSCM {
+                    scmpoll_spec('0 * * * *')
                 }
                 githubPush()
             }
