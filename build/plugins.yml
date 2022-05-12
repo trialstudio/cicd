@@ -6,9 +6,10 @@ plugins:
   - artifactId: configuration-as-code
     source:
       version: 1429.v09b_044a_c93de
-  - artifactId: blueocean
-    source:
-      version: 1.25.3
+# not really used
+#  - artifactId: blueocean
+#    source:
+#      version: 1.25.3
   - artifactId: kubernetes
     source:
       version: 3580.v78271e5631dc
@@ -33,9 +34,10 @@ plugins:
   - artifactId: metrics
     source:
       version: 4.1.6.2
-  - artifactId: github-scm-trait-notification-context
-    source:
-      version: 1.1
+# use github plugins update commit status
+#  - artifactId: github-scm-trait-notification-context
+#    source:
+#      version: 1.1
   - artifactId: job-dsl
     source:
       version: 1.79
@@ -59,3 +61,9 @@ plugins:
   - artifactId: pipeline-utility-steps
     source:
       version: 2.12.1
+  - artifactId: inline-pipeline
+    source:
+      version: 1.0.1
+  - artifactId: workflow-cps-global-lib
+    source:
+      version: 575.v24fa_0a_b_f7383
