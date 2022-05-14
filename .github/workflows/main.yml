@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: write
+      
+    steps:
+      - uses: actions/checkout@v2
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.aws_assume_role }}
+          aws-region: us-east-2
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+      - name: Build, tag, and push image to Amazon ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        run: |
+          ECR_REPOSITORY=$(echo $GITHUB_REPOSITORY | awk -F/ '{print $NF}')
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_RUN_NUMBER build
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_RUN_NUMBER
