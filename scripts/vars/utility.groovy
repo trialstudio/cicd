@@ -1,6 +1,6 @@
 def addMultiBranchPipelinePullRequestJobDsl(String jobName, String renderedPipeline) {
     def scriptTxt = """
-        multibranchPipelineJob('qdqdqd') {
+        multibranchPipelineJob('${jobName}') {
           configure {
             it / factory(class: 'org.jenkinsci.plugins.inlinepipeline.InlineDefinitionBranchProjectFactory', plugin: "inline-pipeline@1.0.1") {
               script('''${renderedPipeline}''')

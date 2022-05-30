@@ -1,7 +1,7 @@
 pipeline {
     agent {
         kubernetes {
-            yaml '''
+            yaml """
                 apiVersion: v1
                 kind: Pod
                 spec:
@@ -29,7 +29,7 @@ pipeline {
                         - sleep
                       args:
                         - infinity
-                '''
+                """
         }
     }
     stages {
@@ -44,11 +44,11 @@ pipeline {
         stage('push to registry') {
             steps {
                 container('kaniko') {
-                    writeFile file: 'Dockerfile', text: '''
+                    writeFile file: 'Dockerfile', text: """
                          FROM nexus-docker-registry:8000/eclipse-temurin:17-jre
                          COPY target/*.jar app.jar
                          ENTRYPOINT ["java", "-jar", "app.jar"]
-                         '''
+                         """
                     sh '/kaniko/executor --no-push --context ./ --force --insecure-pull'
                 }
             }
