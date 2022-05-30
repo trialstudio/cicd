@@ -2,13 +2,13 @@
 plugins:
   - artifactId: git
     source:
-      version: 4.11.1
+      version: 4.11.3
   - artifactId: configuration-as-code
     source:
       version: 1429.v09b_044a_c93de
   - artifactId: blueocean
     source:
-      version: 1.25.3
+      version: 1.25.5
   - artifactId: kubernetes
     source:
       version: 3580.v78271e5631dc
