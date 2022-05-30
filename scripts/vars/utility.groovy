@@ -1,4 +1,4 @@
-def addMultiBranchPipelinePullRequestJobDsl(String jobName, String renderedPipeline) {
+def addMultiBranchPipelinePullRequestJobDsl(String app, String jobName, String renderedPipeline) {
     def scriptTxt = """
         multibranchPipelineJob('${jobName}') {
           configure {
@@ -14,9 +14,9 @@ def addMultiBranchPipelinePullRequestJobDsl(String jobName, String renderedPipel
               source {
                 github {
                   repoOwner('trialstudio')
-                  repositoryUrl('https://github.com/trialstudio/zz.git')
+                  repositoryUrl('https://github.com/trialstudio/${app}.git')
                   configuredByUrl(true)
-                  repository('zz')
+                  repository('${app}')
                   credentialsId('github')
                   traits {
                     gitHubBranchDiscovery {
@@ -39,6 +39,7 @@ def addPipelineJobDsl(String jobName, String renderedPipeline) {
                 definition {
                     cps {
                         script('''${renderedPipeline}''')
+                        sandbox(true)
                     }
                 }
             }
