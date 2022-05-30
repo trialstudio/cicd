@@ -20,8 +20,8 @@ def initialize() {
                     }
                 }
                 utility.addCategorizedViewJobDsl(team.name,
-                        "^(${team.apps.collect { it.name }.join('|')})::.*",
-                        "^(.*)::.*")
+                        "^(${team.apps.collect { it.name }.join('|')})__.*",
+                        "^(.*)__.*")
             }
         }
     }
